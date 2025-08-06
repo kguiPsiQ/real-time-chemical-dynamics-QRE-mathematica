@@ -1,4 +1,4 @@
-# catalyst-paper-QRE-Mathematica
+# real-time-chemical-dynamics-QRE-mathematica
 
 
 This folder contains all necessary Mathematica files to obtain all the number in Table 1, and generate Fig. 2, Fig. 6, and Fig 7 in the paper.
