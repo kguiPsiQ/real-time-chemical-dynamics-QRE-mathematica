@@ -3,6 +3,9 @@
 
 This folder contains all necessary Mathematica files to obtain all the number in Table 1, and generate Fig. 2, Fig. 6, and Fig 7 in the paper.
 
+<img width="570" height="383" alt="Screenshot 2025-08-07 at 11 02 08 AM" src="https://github.com/user-attachments/assets/5fb90d1c-6155-470e-8759-a110e5fe1cfc" />
+
+
 
 The files are organized as follows:
 
