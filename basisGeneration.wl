@@ -82,8 +82,8 @@ Return[basis]
 (* Construct Full Basis,
 - aVecs: list of real-space lattice vectors,
 - cutoff: NEW = energy cutoff in Hartree. OLD = per-direction preferred minimum cutoff,
+- If basisToggle = True, compute the integer number of qubits with the given cutoff (generally leave this True), 
 - If fullBasis = True, compute full basis, else compute information about simulation cell without all basis elements.,
-- If basisToggle = True, compute the integer number of qubits with the given cutoff, 
 then recompute the true basis size, integer pmax, and true cutoff. If false, we keep float values for pmax.
 *)
 constructBasis[aVecs_,cutoff_,basisToggle_,fullBasis_]:=Module[{momentumComponentCutoff,bVecList,pmaxVec,nqubits,
