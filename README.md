@@ -1,24 +1,32 @@
 # real-time-chemical-dynamics-QRE-mathematica
 
+## Summary
+The main goal of this Mathematica code base is to easily (in a few lines) setup and perform fault-tolerant quantum resource estimates (QREs)
+for a user-defined instance of an atomic-scale chemical dynamics problem as described in the manuscript [A comprehensive framework to simulate real-time chemical dynamcis on a fault-tolerant quantum computer](https://arxiv.org/abs/2504.06348). The target users are presumed to have basic chemistry/materials physics knowledge but importantly require *no knowledge of quantum algorithms* to perform QREs. Crucially, this is meant to be chemistry user-friendly and allow easy access to the numerical resource estimates in the manuscript without understanding the substantial algorithmic detail contained within. The `paper_instance_analysis.nb` notebook contains the setup and QRE of all 7 problem instances analyzed in the manuscript. As such, this notebook itself serves as a guide for how to setup and run QREs for other problems that the user desires.
 
-This folder contains all necessary Mathematica files to obtain all the number in Table 1, and generate Fig. 2, Fig. 6, and Fig 7 in the paper.
+**Disclaimer**: While great care has been taken by the authors to ensure correctness, this is *research code* and the style/structure of the packages should be viewed in that light. We welcome comments and discussion.
 
-If you want to reproduce all these results, clone this entire repo, navigate to the `paper_instance_analysis.nb` file, and open it using Mathematica, which should look something like this:
+## Structure
 
-<img width="535" height="365" alt="Screenshot 2025-08-07 at 11 29 32 AM" src="https://github.com/user-attachments/assets/d254515b-7c34-44a2-b20a-6bbaea223824" />
-
-Then you can trying running all the Mathematica blocks in sequence. We first set up some kernels to help you run things in parallel, then load all the needed packages as illustrated below, execute all the quantum resource estimation for different chemical instances, and lastly plot all the QRE results together accross all the instances. We also offer a detailed walkthrough with important comments in `paper_instance_analysis.nb`.
-
------------------------------------------------------
-
-The files are organized as follows:
+The files have dependency graph
 
 <img width="570" height="383" alt="Screenshot 2025-08-07 at 11 02 08 AM" src="https://github.com/user-attachments/assets/5fb90d1c-6155-470e-8759-a110e5fe1cfc" />
 
-The root level notebook, `paper_instance_analysis.nb`, first do all the necessary steps for getting the required numbers for table 1 and all the figures. Then it generates the 3 figures.
+and perform the following functions:
+- The root level notebook, `paper_instance_analysis.nb`, sets up and performs QREs for all 7 instances (as per Table 1) in the manuscript, followed by generation of Figs. 2,6,7 that combines the results together for easy visualization. This notebook serves as the user-guide.
+- `HGHdata.wl` contains raw parameters for the [HGH pseudopotentials](https://journals.aps.org/prb/abstract/10.1103/PhysRevB.58.3641). Importantly, note that only a small subset of all HGH pseudopotentials are included in the code. However, additional pseudopotentials can be straightforwardly added following the format in the package.
+- `preprocessing.wl` reads in the raw HGH parameters and compute numerical quantities that are relevant for QRE for the quantum algorithm.
+- `rescalingFactor.wl` contains methods that compute rescaling factors for the Hamiltonian and its parts using preprocessed HGH information.
+- `compilationCost.wl` contains methods that enumerate the Toffoli costs of the block-encoding circuit.
+- `costAnalysis.wl` combines methods from `rescalingFactor.wl` and `compilationCost.wl`, along with dierct information from `preprocessing.wl` to perform the full time-evolution cost analysis for a given a chemical instance.
+- `simulationCell.wl` enumerates a set of methods to easily define common simulation cells (e.g. a rectangular cuboidal cell).
+- `basisGeneration.wl` contains methods that construct the plane wave basis for a given simulation cell.
 
-`paper_instance_analysis.nb` calls on `basisGeneration.wl` which handles all the plane wave generations, `costAnalysis.wl` which computes all the quantum resource costs given a chemical instance, and `simulationCell.wl` which sets the simulation cell sizes.
+## Instructions
+Clone the repo, navigate to the `paper_instance_analysis.nb` file, and open it using Mathematica. You should see:
 
-`costAnalysis.wl` then calls on `preprocessing.wl` which preprocess some of the required precalculation need for the block encoding, `rescalingFactor.wl` which computes the rescaling factor alpha of different Hamiltonian instances, and `compilationCost.wl` which computes the Toffoli gates need for block encoding H.
+<img width="535" height="365" alt="Screenshot 2025-08-07 at 11 29 32 AM" src="https://github.com/user-attachments/assets/d254515b-7c34-44a2-b20a-6bbaea223824" />
 
-Lastly, `preprocessing.wl` calls on `HGHdata.wl` to write the pseudopotentials.
+Run all the Mathematica notebook cells in sequence. A detailed walkthrough with important comments is provided within the notebook.
+
+
