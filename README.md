@@ -10,7 +10,8 @@ for a user-defined instance of an atomic-scale chemical dynamics problem as desc
 
 The files have dependency graph
 
-<img width="570" height="383" alt="Screenshot 2025-08-07 at 11 02 08 AM" src="https://github.com/user-attachments/assets/5fb90d1c-6155-470e-8759-a110e5fe1cfc" />
+<img width="512" height="430" alt="image" src="https://github.com/user-attachments/assets/cefdf3e0-1574-4465-adbe-c0addf1542ad" />
+
 
 and perform the following functions:
 - The root level notebook, `paper_instance_analysis.nb`, instantiates and performs QREs for all 7 instances (as per Table 1) in the manuscript, followed by generation of Figures 2, 6, 7 that combine all instance results together for easy visualization. This notebook serves as the user-guide.
@@ -23,10 +24,8 @@ and perform the following functions:
 - `basisGeneration.wl` contains methods that construct the plane wave basis for a given simulation cell.
 
 ## Instructions
-Clone the repo, navigate to the `paper_instance_analysis.nb` file, and open it using Mathematica. You should see:
+1. Clone the repo, navigate to the `paper_instance_analysis.nb` file, and open it using Mathematica. 
 
-<img width="535" height="365" alt="Screenshot 2025-08-07 at 11 29 32 AM" src="https://github.com/user-attachments/assets/d254515b-7c34-44a2-b20a-6bbaea223824" />
-
-Run all the Mathematica notebook cells in sequence. A detailed walkthrough with important comments is provided within the notebook.
+2. Run all the Mathematica notebook cells in sequence. A detailed walkthrough with important comments is provided within the notebook.
 
 
